@@ -39,6 +39,10 @@
 
 7. Configure o .env e rode:
    A configuração .env envolve as variáveis APP_ (opcional) e DB_ (obrigatórias).
+   `mv public/img/inovall.png storage/app/public/`
+   `mkdir storage/app/public/users`
+   `mv public/img/picture-none.png storage/app/public/users/`
+   `php artisan storage:link`
    `php artisan config:cache`
 
 ### Parte II - Acesso do sistema
