@@ -21,7 +21,8 @@
                         <button class="btn btn-lightr float-right" onclick="history.back()">
                             X
                         </button>
-                        <form name="register" method="POST" action="{{ route('user.set_user',['id'=>$user->id]) }}" enctype="multipart/form-data">
+                        <form name="register" method="POST" action="{{ route('user.set_user',['id'=>$user->id]) }}"
+                              enctype="multipart/form-data">
                         @csrf
 
                         <!-- Name -->
@@ -44,14 +45,16 @@
                                 <x-label for="CEP" :value="__('CEP')"/>
 
                                 <x-input id="CEP" min="8" min="8" class="block mt-1 w-full" type="text" name="CEP"
-                                         value="{{$address->CEP}}" placeholder="Apenas números" pattern="[0-9]{8}" required/>
+                                         value="{{$address->CEP}}" placeholder="Apenas números" pattern="[0-9]{8}"
+                                         required/>
                             </div>
 
                             <!-- Address -->
                             <div class="mt-4">
                                 <x-label for="address" :value="__('Address')"/>
 
-                                <x-input style="color:white" id="address" class="block mt-1 w-full bg-secondary" type="text" name="address"
+                                <x-input style="color:white" id="address" class="block mt-1 w-full bg-secondary"
+                                         type="text" name="address"
                                          value="{{$address->address}}" required/>
                             </div>
 
@@ -59,7 +62,8 @@
                             <div class="mt-4">
                                 <x-label for="district" :value="__('District')"/>
 
-                                <x-input style="color:white" id="district" class="block mt-1 w-full bg-secondary" type="text"
+                                <x-input style="color:white" id="district" class="block mt-1 w-full bg-secondary"
+                                         type="text"
                                          name="district" value="{{$address->district}}" required/>
                             </div>
 
@@ -82,7 +86,8 @@
                             <div class="mt-4">
                                 <x-label for="complement" :value="__('Complement')"/>
 
-                                <x-input id="complement" style="color:white" class="block mt-1 w-full bg-secondary" type="text"
+                                <x-input id="complement" style="color:white" class="block mt-1 w-full bg-secondary"
+                                         type="text"
                                          value="{{$address->complement}}" name="complement"/>
                             </div>
 
@@ -125,11 +130,11 @@
                                 <x-label for="birth_date" :value="__('Birth')"/>
 
                                 <x-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date"
-                                         value="{{$user->birth_date}}" required/>
+                                         value="{{$user->birth_date}}" required max="{{date('Y-m-d')}}"/>
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <x-button class="ml-4">
+                                <x-button class="ml-4" id="submit">
                                     {{ __('Update') }}
                                 </x-button>
 
@@ -141,9 +146,20 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/validador_cpf.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#CEP').change(function() {
+            $('#CPF').change(function (event) {
+                let cpf = $(this).val();
+                if (validar(cpf)) {
+                    $(this).removeClass('is-invalid');
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $(this).addClass('is-invalid');
+                    $('#submit').prop('disabled', true);
+                }
+            });
+            $('#CEP').change(function () {
                 $.ajax({
                     url: "http://127.0.0.1:8000/user_cep/" + $('#CEP').val(),
                     data: $('form[name="register"]').serialize(),

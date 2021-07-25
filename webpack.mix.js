@@ -19,3 +19,5 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 
 mix.sass('resources/sass/app.scss', 'public/bootstrap')
     .sourceMaps();
+
+mix.scripts('resources/js/validador_cpf.js', 'public/js/validador_cpf.js');

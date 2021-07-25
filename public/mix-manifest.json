@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/bootstrap/app.css": "/bootstrap/app.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/validador_cpf.js": "/js/validador_cpf.js"
 }

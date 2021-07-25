@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <p class="h5 text-secondary">Tem certeza que deseja alterar o status este usuário?</p>
+                    <p class="h5 text-secondary">Tem certeza que deseja alterar o status deste usuário?</p>
                 </div>
                 <div class="modal-footer">
                     <a id="desabilitar-user" href="" type="button" class="btn btn-danger">Alterar</a>
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <p class="h5 text-secondary">Tem certeza que deseja alterar o status este usuário?</p>
+                        <p class="h5 text-secondary">Tem certeza que deseja alterar a senha deste usuário?</p>
                         <button type="submit" class="btn btn-danger">Alterar</button>
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">Cancelar

@@ -113,7 +113,7 @@
                             <div class="mt-4">
                                 <x-label for="CPF" :value="__('CPF')"/>
 
-                                <x-input placeholder="Apenas números" id="CPF" class="block mt-1 w-full" type="text"
+                                <x-input placeholder="Apenas números" id="CPF" class="block mt-1 w-full form-control" type="text"
                                          name="CPF" pattern="[0-9]{11}"
                                          :value="old('CPF')" required/>
                             </div>
@@ -123,7 +123,7 @@
                                 <x-label for="birth_date" :value="__('Birth')"/>
 
                                 <x-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date"
-                                         :value="old('birth_date')" required/>
+                                         :value="old('birth_date')" required max="{{date('Y-m-d')}}"/>
                             </div>
 
                             <!-- Password -->
@@ -146,7 +146,7 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <x-button class="ml-4">
+                                <x-button class="ml-4 disabled" id="submit">
                                     {{ __('Register') }}
                                 </x-button>
                             </div>
@@ -156,12 +156,23 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/validador_cpf.js') }}"></script>
     <script>
         $(document).ready(function () {
+            $('#submit').prop('disabled', true);
+            $('#CPF').change(function (event) {
+                let cpf = $(this).val();
+                if (validar(cpf)) {
+                    $(this).removeClass('is-invalid');
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $(this).addClass('is-invalid');
+                    $('#submit').prop('disabled', true);
+                }
+            });
             $('#CEP').change(function() {
                 $.ajax({
                     url: "http://127.0.0.1:8000/user_cep/" + $('#CEP').val(),
-                    data: $('form[name="register"]').serialize(),
                     type: "get",
                     dataType: 'json',
                     async: true,
