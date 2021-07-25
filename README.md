@@ -26,6 +26,7 @@
    `cd inovall`
    `git pull origin main`
    `composer install && npm install`
+   `npm run dev`
 
 4. Ainda na raiz, crie um arquivo .env:
    `cp .env.example .env`
@@ -39,3 +40,13 @@
 7. Configure o .env e rode:
    A configuração .env envolve as variáveis APP_ (opcional) e DB_ (obrigatórias).
    `php artisan config:cache`
+
+### Parte II - Acesso do sistema
+
+1. Rode o comando serve.
+   `php artisan serve`
+2. O comando lhe dará um link de acesso.
+   
+3. Será redirecionado para pagina de login onde poderá fazer login da seguintes formas:
+   `usuario: CPF (11111111111) || EMAIL (admin@admin.com)|| USERNAME(admin)`
+   `password: admin`
