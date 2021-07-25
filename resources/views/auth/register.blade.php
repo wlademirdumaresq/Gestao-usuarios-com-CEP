@@ -115,7 +115,7 @@
 
                                 <x-input placeholder="Apenas números" id="CPF" class="block mt-1 w-full form-control" type="text"
                                          name="CPF" pattern="[0-9]{11}"
-                                         :value="old('CPF')" required/>
+                                         required/>
                             </div>
 
                             <!-- Birth date -->
