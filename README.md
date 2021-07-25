@@ -20,11 +20,11 @@
 
 2. Vá ao diretório em questão e clone o repositório:
    `cd /var/www/html`
-   `git clone https://github.com/davimmt/sistema_bomdia.git`
+   `git clone https://github.com/wlademirdumaresq/inovall.git`
 
 3. Entre na raiz do projeto e instale o composer e o npm:
-   `cd /var/ww/html/sistema_bomdia`
-   `git pull origin production`
+   `cd inovall`
+   `git pull origin main`
    `composer install && npm install`
 
 4. Ainda na raiz, crie um arquivo .env:
@@ -33,6 +33,9 @@
 5. Ainda na raiz, gere a chave:
    `php artisan key:generate`
 
-6. Configure o .env e rode:
+6. Rode o comando de migração :
+   `php artisan migrate`
+
+7. Configure o .env e rode:
    A configuração .env envolve as variáveis APP_ (opcional) e DB_ (obrigatórias).
    `php artisan config:cache`
